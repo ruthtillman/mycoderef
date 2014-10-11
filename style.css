@@ -1,3 +1,7 @@
+/*  */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
 
 * {
 	margin: 0;
@@ -6,10 +10,46 @@
 
 body {
 	background: #f7f7f7;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 95%;
+}
+
+code, pre {
+	font-family: Courier, monospace;
+	background-color: #f7f7f7;
+	margin: 10px 0;
+	padding: 10px;
+}
+
+ol, ul {
+	margin: 10px 0;
+}
+
+.centered {
+	text-align: center;
 }
 
 #container {
 	width: 80%;
 	margin-left: 10%;
 	background: #fff;
+	padding: 40px 0 20px;
 }
+
+#main {
+	min-height: 700px;
+	padding: 0 20px;
+}
+
+#footer {
+	font-size: 0.9em;
+	border-top: 1px solid #f7f7f7;
+	padding: 15px 20px 10px;
+	min-height: 100px;
+}
+
+h1, h2, h3, h4 {
+	color: #121212;
+	padding-bottom: 10px;
+}
+
