@@ -8,17 +8,31 @@
 	<div id="container">
 		<div id="main">
 			<h1>SQL Query Reference Sheet</h1>
-			<p>A useful place for me to keep track of basic query structures so that I don't make mistakes 'live'.</p>
-			<h2>Base update query</h2>
-			<pre>UPDATE table_name<br />SET col1='val1', col2='val2'<br/>WHERE key='keyvalue';</pre>
-			<h2>Insert Into</h2>
+			<p>A variety of SQL query examples, lots of basic stuff taken from basic tutorials as well as more personally-useful stuff.</p>
+			<h2>Basic SQL Stuff</h2>
+			<h3>Base update/delete queries</h3>
+			<pre>UPDATE table_name<br />SET col1='val1', col2='val2'<br/>WHERE key='keyvalue' [AND/OR] col2='val2';</pre>
+			<pre>DELETE FROM table_name<br/>WHERE key='keyvalue' [AND/OR] col2='val2';</pre>
+			<h3>Insert Into</h3>
 			<pre>INSERT INTO table_name (col1, col2, col3)<br/>VALUES (val1, val2, val3);</pre>
 			<p>Columns don't have to specified in the first line, but they determine specific columns where things will be inserted. Depending on needs and specificity.</p>
-			<h2>Unique results</h2>
-			<pre>SELECT DISTINCT col1, col2<br/>FROM table_name<br/>WHERE condition='fulfilled'</pre>
-			<h2>Order by</h2>
-			<pre>ORDER BY col1, col2 ASC|DESC</pre>
+			<h3>Unique results</h3>
+			<pre>SELECT DISTINCT col1, col2<br/>FROM table_name<br/>WHERE condition='fulfilled';</pre>
+			<h3>Order by</h3>
+			<pre>ORDER BY col1, col2 ASC|DESC;</pre>
 			<p>Ascending by default. May order by all columns if decided.</p>
+			<h2>SQL Joins</h2>
+			<p>Fuuuuuuuucking SQL Joins. Anyway, in theory:</p>
+			<pre>SELECT table_1.col_a, table_1.col_d, table_2.col_c<br/>table_1 JOINTYPE table_2<br/>    ON (table_1.col_a=table_2.col_f)<br/>WHERE col_b='value'</pre>
+			<p>Where JOINTYPE = the type of join&mdash; right, inner, etc.</p>
+			<p>The "database_name." can be affixed to the beginning of table names.</p>
+			<h3>Inner Join</h3>
+			<p>Returns a result row when both paired columns have matching values.</p>
+			<h3>Outer Join</h3>
+			<p>Returns a result row when either table has a column with the matching value.</p>
+			<p>
+			<h3>Right Join</h3>
+			<h3>Left Join</h3>
 		</div>
 		<div id="footer" class="centered">
 			<p xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
