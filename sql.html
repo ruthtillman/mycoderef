@@ -10,6 +10,7 @@
 			<h1>SQL Query Reference Sheet</h1>
 			<p>A variety of SQL query examples, lots of basic stuff taken from basic tutorials as well as more personally-useful stuff.</p>
 			<h2>Basic SQL Stuff</h2>
+			<p>Super basic stuff I don't want to screw up live.</p>
 			<h3>Base update/delete queries</h3>
 			<pre>UPDATE table_name<br />SET col1='val1', col2='val2'<br/>WHERE key='keyvalue' [AND/OR] col2='val2';</pre>
 			<pre>DELETE FROM table_name<br/>WHERE key='keyvalue' [AND/OR] col2='val2';</pre>
@@ -31,8 +32,42 @@
 			<h3>Outer Join</h3>
 			<p>Returns a result row when either table has a column with the matching value.</p>
 			<p>
-			<h3>Right Join</h3>
-			<h3>Left Join</h3>
+			<h4>Left Outer Join</h4>
+			<p>Left, in this case, refers to the first table in the pairing. It'll match every line in the first table and designated data from the second if it exists.</p>
+			<pre>SELECT product.id AS "ID", product.name AS Name, "$" + stock.price AS Price, stock.number AS "Stock Count"<br/>FROM product LEFT JOIN stock<br/>    ON product.id=stock.id</pre>
+			<p>For a pair of tables where:</p>
+			<pre>1, Teddy Bear<br/>2, Stuffed Gorilla<br/>3, Stuffed Octopus</pre>
+			<p>and</p>
+			<pre>1,$14.99,29<br/>2,,<br/>3,,24</pre>
+			<p>This will return:</p>
+			<table>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Stock Count</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>Teddy Bears</td>
+					<td>$14.99</td>
+					<td>29</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Stuffed Gorilla</td>
+					<td/>
+					<td/>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Stuffed Octopus</td>
+					<td></td>
+					<td>24</td>
+				</tr>
+			</table>
+			<h4>Right Outer Join</h4>
+			<p>Right, in this case, refers to the second table in the pairing. It'll match every line in the second table and designated data from the second if it exists. See above example, only to the right vs. the left.</p>
 		</div>
 		<div id="footer" class="centered">
 			<p xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
