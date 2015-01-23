@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SQL Query Reference Sheet</title>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+</head>
+<body>
+	<div id="container">
+		<div id="main">
+		<h1>Using PuTTy to edit cron job/crontab (like VI)</h1>
+		<h2>Steps in PuTTY to access and edit</h2>
+		<p><strong>Step 1.</strong> Login to the server.</p>
+		<p><strong>Step 2.</strong> Type <code>crontab -e</code> to open crontab. Scroll down (may need to use arrow keys) to view current commands list.</p>
+		<p><strong>Step 3.</strong> Press <strong>Insert</strong> to make cron jobs editable.</p>
+		<p><strong>Step 4.</strong> Edit file, then press <strong>Esc</strong> to stop editing.</p>
+		<p><strong>Step 5.</strong> Type <code>:wq</code> to exit the crontab. You'll need to do this to get the message <code>"installing new crontab"</code></p>
+		<h2>Basic Cron Setup</h2>
+		<p>Cron allows a great deal of specificity in how things are set up:</p>
+		<pre>MIN &mdash; Minute 0-60<br/>
+			HOUR &mdash; Hour [24-hour clock] 0-23<br/>
+			MDAY &mdash; Day of Month 1-31<br/>
+			MON &mdash; Month 1-12 OR jan,feb,mar,apr&ellip;<br/>
+			DOW &mdash; Day Of Week 0-6 OR sun,mon,tue,wed,thu,fri,sat<br/>
+			COMMAND &mdash; Command to be run Any valid command-line<br/>
+		</pre>
+		<table>
+			<tr> 
+				<th>MIN</th>
+				<th>HOUR</th>
+				<th>MDAY</th>
+				<th>MON</th>
+				<th>DOW</th>
+				<th>COMMAND</th>
+			</tr>
+			<tr>
+				<td>*/10</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>wget http://mydomain.com/myphp_script.php</td>
+			</tr>
+		</table>
+		<p>The command above will run every 10 minutes. The slash allows for repeating, The <pre>*</pre> means it will be run every instance of the time period. Without the <pre>/</pre>, it would run on the tenth minute of the hour. Without the asterisk, it would (I think) need an hour designated on which to run it.</p>
+		<p>Commas and dashes should be used to designate multiple items in any section. For example:</p>
+		<pre>01,31 04,05 1-15 1,6 * /usr/bin/somedirectory/somecommand</pre>
+		<p>would run on the 1st and 31st minutes of 4 and 5am on the Jan 1-15 and June 1-15.</p>
+		<pre>30 0 * * sun,wed /usr/bin/somedirectory/somecommand</pre>
+		<p>...would run at 12:30am (0030 hours) each Sunday and Wednesday.</p>
+		<p>For more detailed information about Cron, see the <a href="https://help.ubuntu.com/community/CronHowto">Ubuntu Cron Reference Guide</a>.</p>
+		</div>
+		<div id="footer" class="centered">
+			<p xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
+  <a rel="license"
+     href="http://creativecommons.org/publicdomain/zero/1.0/">
+    <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+  </a>
+  <br />
+  To the extent possible under law,
+  <a rel="dct:publisher"
+     href="http://ruthtillman.com">
+    <span property="dct:title">Ruth Tillman</span></a>
+  has waived all copyright and related or neighboring rights to
+  <span property="dct:title">Code Reference Project</span>.
+This work is published from:
+<span property="vcard:Country" datatype="dct:ISO3166"
+      content="US" about="http://rkt.pw/code">
+  United States</span>.
+</p>
+		</div>
+	</div>
+</body>
+</html>
