@@ -18,6 +18,10 @@ code, pre {
 	font-family: Courier, monospace;
 	background-color: #f7f7f7;
 	margin: 10px 0;
+	padding: 3px;
+}
+
+pre {
 	padding: 10px;
 }
 

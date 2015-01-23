@@ -17,32 +17,27 @@
 		<p><strong>Step 5.</strong> Type <code>:wq</code> to exit the crontab. You'll need to do this to get the message <code>"installing new crontab"</code></p>
 		<h2>Basic Cron Setup</h2>
 		<p>Cron allows a great deal of specificity in how things are set up:</p>
-		<pre>MIN &mdash; Minute 0-60<br/>
-			HOUR &mdash; Hour [24-hour clock] 0-23<br/>
-			MDAY &mdash; Day of Month 1-31<br/>
-			MON &mdash; Month 1-12 OR jan,feb,mar,apr&ellip;<br/>
-			DOW &mdash; Day Of Week 0-6 OR sun,mon,tue,wed,thu,fri,sat<br/>
-			COMMAND &mdash; Command to be run Any valid command-line<br/>
+		<pre>MIN &mdash; Minute 0-60<br/>HOUR &mdash; Hour [24-hour clock] 0-23<br/>MDAY &mdash; Day of Month 1-31<br/>MON &mdash; Month 1-12 OR jan,feb,mar,apr&ellip;<br/>DOW &mdash; Day Of Week 0-6 OR sun,mon,tue,wed,thu,fri,sat<br/>COMMAND &mdash; Command to be run Any valid command-line<br/>
 		</pre>
 		<table>
 			<tr> 
-				<th>MIN</th>
-				<th>HOUR</th>
-				<th>MDAY</th>
-				<th>MON</th>
-				<th>DOW</th>
-				<th>COMMAND</th>
+				<td width="5%">MIN</td>
+				<td width="5%">HOUR</td>
+				<td width="5%">MDAY</td>
+				<td width="5%">MON</td>
+				<td width="5%">DOW</td>
+				<td>COMMAND</td>
 			</tr>
 			<tr>
-				<td>*/10</td>
-				<td>*</td>
-				<td>*</td>
-				<td>*</td>
-				<td>*</td>
+				<td width="5%">*/10</td>
+				<td width="5%">*</td>
+				<td width="5%">*</td>
+				<td width="5%">*</td>
+				<td width="5%">*</td>
 				<td>wget http://mydomain.com/myphp_script.php</td>
 			</tr>
 		</table>
-		<p>The command above will run every 10 minutes. The slash allows for repeating, The <pre>*</pre> means it will be run every instance of the time period. Without the <pre>/</pre>, it would run on the tenth minute of the hour. Without the asterisk, it would (I think) need an hour designated on which to run it.</p>
+		<p>The command above will run every 10 minutes. The slash allows for repeating, The <code>*</code> means it will be run every instance of the time period. Without the <code>/</code>, it would run on the tenth minute of the hour. Without the asterisk, it would (I think) need an hour designated on which to run it.</p>
 		<p>Commas and dashes should be used to designate multiple items in any section. For example:</p>
 		<pre>01,31 04,05 1-15 1,6 * /usr/bin/somedirectory/somecommand</pre>
 		<p>would run on the 1st and 31st minutes of 4 and 5am on the Jan 1-15 and June 1-15.</p>
