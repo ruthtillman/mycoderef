@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Regular Expressions Reference Sheet</title>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+</head>
+<body>
+	<div id="container">
+		<div id="main">
+			<h1>Regex Notes and Cheat Sheet</h1>
+
+				<p>These notes were drawn from the <a href="http://www.slideshare.net/SandySmith/dont-fear-the-regex">Don't Fear the Regex</a> presentation done at Drupal Days Capital Camp July 2015. These notes make sense to me, most will probably make sense to you but they're not gospel canon.</p>
+
+				<ul>
+				<li>ereg - bad Regex tutorial, avoid it</li>
+				<li>PHP allows you to use more than / / as a delimiter</li>
+				<li>Ruth's own note: SublimeText doesn't require use of delimiter</li>
+				</ul>
+
+
+				<h2>Commands</h2>
+
+				<ul>
+				<li>^ &mdash; match string at the beginning of a line</li>
+				<li>$ &mdash; match string at the end of a line</li>
+				<li> /^PHP/ will match "PHP" at the very beginning of a line</li>
+				<li> . &mdash; single any</li>
+				<li> + &mdash; oneOrMore</li>
+				<li> * &mdash; zeroOrMore</li>
+				<li> ? &mdash; zeroOrOne</li>
+				<li> * and + are greedy</li>
+				<li> ? &mdash; kills greed, so P.*?P will match anything until it hits the first P. So PIP, PHP, PHHHHHP, Pamp, etc.</li>
+				<li> HTML &mdash; <code>/&lt;.+?&gt;/</code> so it moves it from one or more "." until it hits the first &gt;</li>
+				<li>Escaping &mdash; <code>/\./ = .</code> or <code>/^\$/</code> would match a string beginning with $</li>
+				<li>preg_match would return 1 or 0 depending on whether or not it finds it.</li>
+				</ul>
+
+				<h2>Character classes</h2>
+
+				<p>Ways to identify character/s from a set of characters:</p>
+
+				<ul>
+				<li>Enclosed by <code>[ ]</code></li>
+				<li><code>[aqT,]</code> will match the first of any of those 4 characters you hit and ONLY that.</li>
+				<li><code>[a-c4z6-8]</code> matches first instance of a, b, c, 4, z, 6, 7, 8</li>
+				<li>negative classes include <code>[^ ]</code></li>
+				<li><code>[^a]</code> matches anything but an "a" or <code>[^a-c]</code> will match anything but a, b, c</li>
+				<li><code>/^[0-9]+/</code> extract entire integer at the beginning of the line/string</li>
+				<li><code>/^[a-zA-Z0-9]+/</code> will match an alphanumeric string</li>
+				<li><code>/^\$[a-zA-Z_][a-zA-Z0-9_]*$/</code> will match valid variable names in PHP (they begin with $ and can only start with upper/lower case letter or an underscore)</li>
+				</ul>
+
+				<h3>Shorthand Character classes</h3>
+
+				<p>The short versions of the character classes:</p>
+
+				<ul>
+				<li><code>\d</code> digit &amp; <code>\D</code> = everything else</li>
+				<li><code>\s</code> whitespace &amp; <code>\S</code> = everything else</li>
+				<li><code>\t</code> tab</li>
+				<li><code>\r</code> <code>\n</code> <code>\r\n</code> but then <code>\R</code> = match ANY OF THE 3.</li>
+				<li><code>\h</code> = any non-line ending in a whitespace</li>
+				<li><code>\w</code> word</li>
+				</ul>
+
+				<h2>Subpatterns</h2>
+
+				<p>Subpatterns allow you to find a specific part of the pattern as a separately-identified pattern. This can be helpful later for backreferences.</p>
+
+				<ul>
+				<li>subpatterns enclosed in ( )</li>
+				<li><code>(cat)</code> = cat, <code>(cat)+</code> = catcatcat</li>
+				<li><code>(cat|dog)</code> = cat or dog</li>
+				<li>preg_match has a 3rd argument to pass an array of pattern and then subpatterns</li>
+				<li><code>/^\$([a-zA-Z_][a-zA-Z0-9_]*)$/</code> will return "$variable" as the first response and then "variable" because the <code>\$</code> is outside the ( )</li>
+				<li><code>/^(http|https|ftp|gopher|file):\/\/)?([^.]+?)/</code> gets the domain.</li>
+				</ul>
+
+				<h2>Back References</h2>
+
+				<p>Identifying stuff is good, but then how do we reference it once we've found and identified it?</p>
+
+				<ul>
+				<li>ordinal placement of the subpatterns</li>
+				<li><code>(outer(inner)) \1 = outer, \2 = (inner)</code></li>
+				<li><code>(sub1)(sub2) \1 = sub1, \2 = sub2</code></li>
+				<li><code>/([\'"])(.*?)\1;/</code> = match anything in quotes but will look for the first match of either of those</li>
+				<li>preg_replace <code>$1 = \1</code></li>
+				<li><code>/i</code> = case-insensitive. Global for the whole select statement</li>
+				<li>use filter_var and parse_url more instead of Regex for those things. Email addresses can't be perfectly matched.</li>
+				</ul>
+
+		</div>
+		<div id="footer" class="centered">
+			<p xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
+  <a rel="license"
+     href="http://creativecommons.org/publicdomain/zero/1.0/">
+    <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+  </a>
+  <br />
+  To the extent possible under law,
+  <a rel="dct:publisher"
+     href="http://ruthtillman.com">
+    <span property="dct:title">Ruth Tillman</span></a>
+  has waived all copyright and related or neighboring rights to
+  <span property="dct:title">Code Reference Project</span>.
+This work is published from:
+<span property="vcard:Country" datatype="dct:ISO3166"
+      content="US" about="http://rkt.pw/code">
+  United States</span>.
+</p>
+		</div>
+	</div>
+</body>
+</html>
